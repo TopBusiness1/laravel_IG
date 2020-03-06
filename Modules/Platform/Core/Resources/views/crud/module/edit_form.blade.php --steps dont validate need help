@@ -1,0 +1,55 @@
+<div class="row">
+        
+    {!! form_start($form) !!}
+
+    <ul class="stepper horizontal">
+
+    @foreach($show_fields as $panelName => $panel)
+            
+            <li class="step">
+            <div class="step-title waves-effect">{{ $panelName }}</div>
+            <div class="step-content">
+                <div class="row">
+                @foreach($panel as $fieldName => $options)
+
+                    @if($form->{$fieldName}!= null && !isset($options['hide_in_form']) && !isset($options['hide_in_edit']) )
+                        <div class="{{ isset($options['col-class']) ? $options['col-class'] : 'col-lg-6 col-md-6 col-sm-6 col-xs-6' }}">
+                            {!! form_row($form->{$fieldName}) !!}
+                        </div>
+                    @endif
+
+                @endforeach
+                    <div class="step-actions">
+                        <!-- If you want the button to proceed, give it a .next-step class -->
+                        <button class="waves-effect waves-dark btn next-step">CONTINUE</button>
+                        <!-- If you want the button to return, give it a .previous-step class -->
+                        <button class="waves-effect waves-dark btn previous-step">BACK</button>
+                        <!-- If you want the button to submit the form, give it no additional classes and define type="submit" -->
+                        <button class="waves-effect waves-dark btn" type="submit">SUBMIT</button>
+                                
+                     </div>
+                </div>
+            </div>
+            </li>
+            
+            @endforeach
+        </ul>
+
+    {!! form_end($form, $renderRest = true) !!}
+
+</div>
+
+</div>
+
+
+
+@if( $modal_form )
+    @foreach($jsFiles as $jsFile)
+        <script src="{!! Module::asset($moduleName.':js/'.$jsFile) !!}"></script>
+    @endforeach
+@endif
+
+
+@if($form_request != null && $modal_form)
+    {!! JsValidator::formRequest($form_request, '#'.$formId) !!}
+@endif

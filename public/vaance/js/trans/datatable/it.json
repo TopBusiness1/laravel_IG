@@ -1,0 +1,24 @@
+{
+  "sEmptyTable": "Dati non disponibili",
+  "sInfo": "Record da _START_ a _END_ di _TOTAL_ totali",
+  "sInfoEmpty": "Recordo da 0 a 0 di 0 totali",
+  "sInfoFiltered": "(filtra da _MAX_ totali)",
+  "sInfoPostFix": "",
+  "sInfoThousands": ",",
+  "sLengthMenu": "_MENU_",
+  "sLoadingRecords": "Caricamento...",
+  "sProcessing": "Elaborazione...",
+  "sSearch": "",
+  "sZeroRecords": "Nessun record trovato",
+  "oPaginate": {
+    "sFirst": "Primo",
+    "sLast": "Ultimo",
+    "sNext": "Successivo",
+    "sPrevious": "Precedente"
+  },
+  "oAria": {
+    "sSortAscending": ": clicca per ordinare ascendente",
+    "sSortDescending": ": clicca per ordinare discendente"
+  },
+  "searchPlaceholder": "Cerca..."
+}

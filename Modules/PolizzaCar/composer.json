@@ -1,0 +1,25 @@
+{
+    "name": "Vaance/polizzacar",
+    "description": "",
+    "authors": [
+        {
+            "name": "Vaance - Business Application Platform",
+            "email": "a.vacca@vaance.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\PolizzaCar\\Providers\\PolizzaCarServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\PolizzaCar\\": ""
+        }
+    }
+}

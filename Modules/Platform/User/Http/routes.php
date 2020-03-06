@@ -1,0 +1,25 @@
+<?php
+
+Route::group(['middleware' => ['web','permission:settings.access'], 'prefix' => 'settings','as'=>'settings.', 'namespace' => 'Modules\Platform\User\Http\Controllers'], function () {
+    Route::resource('users', 'User\UserController', []);
+
+    Route::get('/users/ghost-login/{identifier}', ['as' => 'users.login-as', 'uses' => 'User\UserGhostLoginController@login']);
+    Route::post('/users/change-password/{identifier}', ['as' => 'users.change-password', 'uses' => 'User\UserChangePasswordController@changePassword']);
+    Route::get('/users/activity/{identifier}', ['as' => 'users.activity', 'uses' => 'User\UserActivityController@activity']);
+
+
+    Route::resource('roles', 'Roles\RolesController', []);
+
+    Route::get('/roles/permissions/{id}', ['as' => 'roles.permissions', 'uses' => 'Roles\PermissionsController@setup']);
+    Route::post('/roles/permissions/{id}', ['as' => 'roles.permissions-save', 'uses' => 'Roles\PermissionsController@save']);
+
+    Route::resource('groups', 'GroupsController', []);
+
+    Route::get('sharing_rules', ['as' => 'sharing_rules', 'uses' => 'SharingRulesController@index']);
+});
+
+
+Route::group(['middleware' => ['web']], function () {
+	Route::get('/password/custom_reset/{verification_token}', ['as' => 'password.edit', 'uses' => '\App\Http\Controllers\PasswordController@edit']);
+	Route::post('/password/custom_update', '\App\Http\Controllers\PasswordController@update')->name('password.custom.update');
+});
